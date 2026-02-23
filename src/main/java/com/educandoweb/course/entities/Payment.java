@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +24,7 @@ public class Payment implements Serializable {
 
     private Instant moment;
 
+    @JsonIgnore
     @OneToOne
     @MapsId
     @JoinColumn(name = "order_id")
